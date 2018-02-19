@@ -1,6 +1,6 @@
 Envoy_3
 ======================================
-Forked from kennethreitz/envoy <https://github.com/kennethreitz/envoy>`_
+Forked from `_kennethreitz/envoy <https://github.com/kennethreitz/envoy>`_
 Since the Envoy package obtained from pip was actually different from that one on Github,
 I pushed the pip-version code to this repository.
 
