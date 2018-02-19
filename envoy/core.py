@@ -21,7 +21,7 @@ __license__ = 'MIT'
 __author__ = 'Kenneth Reitz'
 
 
-def _terminate_process(process):
+def _terminate_process(process):  ##终止进程
     if sys.platform == 'win32':
         import ctypes
         PROCESS_TERMINATE = 1
@@ -32,21 +32,21 @@ def _terminate_process(process):
         os.kill(process.pid, signal.SIGTERM)
 
 
-def _kill_process(process):
+def _kill_process(process):  ##杀死进程
     if sys.platform == 'win32':
         _terminate_process(process)
     else:
         os.kill(process.pid, signal.SIGKILL)
 
 
-def _is_alive(thread):
+def _is_alive(thread):  ##判断进程是否存活
     if hasattr(thread, "is_alive"):
         return thread.is_alive()
     else:
         return thread.isAlive()
 
 
-class Command(object):
+class Command(object):  ##命令类
     def __init__(self, cmd):
         self.cmd = cmd
         self.process = None
@@ -151,7 +151,7 @@ class ConnectedCommand(object):
 
 
 
-class Response(object):
+class Response(object):  ##回复类
     """A command's response"""
 
     def __init__(self, process=None):
@@ -172,7 +172,7 @@ class Response(object):
             return '<Response>'
 
 
-def expand_args(command):
+def expand_args(command):  ##解析传入参数
     """Parses command strings and returns a Popen-ready list."""
 
     # Prepare arguments.
@@ -194,7 +194,7 @@ def expand_args(command):
     return command
 
 
-def run(command, data=None, timeout=None, kill_timeout=None, env=None, cwd=None):
+def run(command, data=None, timeout=None, kill_timeout=None, env=None, cwd=None):  ##主要的函数，envoy.run
     """Executes a given commmand and returns Response.
 
     Blocks until process is complete, or timeout is reached.
